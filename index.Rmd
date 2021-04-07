@@ -1,14 +1,15 @@
 ---
 title: ''
 author: ''
-date: "`r Sys.Date()`"
+date: "updated `r Sys.Date()`"
 output:
   html_document:
+    df_print: paged
+    toc: TRUE
+    toc_float: TRUE
     css: customstyles.css
-    self_contained: yes
-    toc: no
-  pdf_document:
-    toc: yes
+geometry: margin=1cm
+always_allow_html: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -42,8 +43,8 @@ knitr::include_graphics("CSI-logo-A-contrast-2018.png")
 ```
 </center>
 
-# Initiatives Map
-
+# Overview
+updated `r Sys.Date()`
 <style>
 div.blue {background-color: #e6f0ff; border-radius: 5px; padding: 10px;}
 </style>
@@ -58,20 +59,51 @@ This directory is the product of the Center for Social Innovation's efforts to d
 <center>
 [Download raw data](https://github.com/UCRCSI/initiative_maps/blob/main/final_initiatives.xlsx?raw=true)
 </center>
-```{r}
+
+# Local
+
+```{r local,results="asis"}
 # Load Data ---------------------------------------------------------------
 source("excel_generator.R")
 
 dta_local %>%
-     datatable(escape = T, rownames = T,
+     datatable(escape = T, 
+               rownames = F,
                options = list(
-  initComplete = JS("
-    function(settings, json) {
-      $(this.api().table().header()).css({
-        'background-color': '#3f3f3f',
-        'color': '#ffffff'
-      });
-    }")
-))
+                 autoWidth = TRUE,
+                 columnDefs = list(list(width = '400px', targets = "_all")),
+                 initComplete = JS("function(settings, json) {$(this.api().table().header()).css({'background-color':
+                                   '#3f3f3f','color':'#ffffff'});}")))
+```
 
+# Statewide
+
+```{r state,results="asis"}
+# Load Data ---------------------------------------------------------------
+source("excel_generator.R")
+
+dta_state %>%
+     datatable(escape = T, 
+               rownames = F,
+               options = list(
+                 autoWidth = TRUE,
+                 columnDefs = list(list(width = '400px', targets = "_all")),
+                 initComplete = JS("function(settings, json) {$(this.api().table().header()).css({'background-color':
+                                   '#3f3f3f','color':'#ffffff'});}")))
+```
+
+# National
+
+```{r national,results="asis"}
+# Load Data ---------------------------------------------------------------
+source("excel_generator.R")
+
+dta_national %>%
+     datatable(escape = T, 
+               rownames = F,
+               options = list(
+                 autoWidth = TRUE,
+                 columnDefs = list(list(width = '400px', targets = "_all")),
+                 initComplete = JS("function(settings, json) {$(this.api().table().header()).css({'background-color':
+                                   '#3f3f3f','color':'#ffffff'});}")))
 ```
