@@ -31,7 +31,8 @@ dta_local <- dta_local %>%
          `Priority population` = priority_pop,
          `Additional Info` = addition,
          `Contact name` = contact_name,
-         `Contact email` = contact_email)
+         `Contact email` = contact_email) %>% 
+  arrange(Name)
 
 dta_state <- dta_state %>%
   select(name, contact_name, contact_email, description, focus, lead, scope, partners, priority_pop, URL, addition) %>% 
@@ -44,7 +45,8 @@ dta_state <- dta_state %>%
          `Priority population` = priority_pop,
          `Additional Info` = addition,
          `Contact name` = contact_name,
-         `Contact email` = contact_email)
+         `Contact email` = contact_email) %>% 
+  arrange(Name)
 
 dta_national <- dta_national %>%
   select(name, contact_name, contact_email, description, focus, lead, scope, partners, priority_pop, URL, addition) %>% 
@@ -57,7 +59,8 @@ dta_national <- dta_national %>%
          `Priority population` = priority_pop,
          `Additional Info` = addition,
          `Contact name` = contact_name,
-         `Contact email` = contact_email)
+         `Contact email` = contact_email) %>% 
+  arrange(Name)
 
 dta_initiative <- createWorkbook()
 addWorksheet(dta_initiative, sheetName = "local", gridLines = T)

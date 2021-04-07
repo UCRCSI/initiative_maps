@@ -8,7 +8,6 @@ output:
     toc: TRUE
     toc_float: TRUE
     css: customstyles.css
-geometry: margin=1cm
 always_allow_html: yes
 ---
 
@@ -57,40 +56,8 @@ This directory is the product of the Center for Social Innovation's efforts to d
 ***
 
 <center>
-[Download raw data](https://github.com/UCRCSI/initiative_maps/blob/main/final_initiatives.xlsx?raw=true)
+[Download raw data as an Excel file](https://github.com/UCRCSI/initiative_maps/blob/main/final_initiatives.xlsx?raw=true)
 </center>
-
-# Local
-
-```{r local,results="asis"}
-# Load Data ---------------------------------------------------------------
-source("excel_generator.R")
-
-dta_local %>%
-     datatable(escape = T, 
-               rownames = F,
-               options = list(
-                 autoWidth = TRUE,
-                 columnDefs = list(list(width = '400px', targets = "_all")),
-                 initComplete = JS("function(settings, json) {$(this.api().table().header()).css({'background-color':
-                                   '#3f3f3f','color':'#ffffff'});}")))
-```
-
-# Statewide
-
-```{r state,results="asis"}
-# Load Data ---------------------------------------------------------------
-source("excel_generator.R")
-
-dta_state %>%
-     datatable(escape = T, 
-               rownames = F,
-               options = list(
-                 autoWidth = TRUE,
-                 columnDefs = list(list(width = '400px', targets = "_all")),
-                 initComplete = JS("function(settings, json) {$(this.api().table().header()).css({'background-color':
-                                   '#3f3f3f','color':'#ffffff'});}")))
-```
 
 # National
 
@@ -102,8 +69,75 @@ dta_national %>%
      datatable(escape = T, 
                rownames = F,
                options = list(
-                 autoWidth = TRUE,
-                 columnDefs = list(list(width = '400px', targets = "_all")),
+                 autoWidth = T,
+                 scrollX=TRUE,
+                 pageLength = 1,
+                 columnDefs = list(list(targets=c(0), visible=TRUE, width='400'),
+                                   list(targets=c(1), visible=TRUE, width='200'),
+                                   list(targets=c(3), visible=TRUE, width='800'),
+                                   list(targets=c(4), visible=TRUE, width='400'),
+                                   list(targets=c(6), visible=TRUE, width='400'),
+                                   list(targets=c(7), visible=TRUE, width='400'),
+                                   list(targets=c(8), visible=TRUE, width='800'),
+                                   list(targets=c(10), visible=TRUE, width='400')),
+                 # columnDefs = list(list(width = '400px', targets = c(0,3,4,7,10))),
+                 initComplete = JS("function(settings, json) {$(this.api().table().header()).css({'background-color':
+                                   '#3f3f3f','color':'#ffffff'});}")))
+```
+
+<br>
+<br>
+<br>
+
+# Statewide
+
+```{r state,results="asis"}
+# Load Data ---------------------------------------------------------------
+dta_state %>%
+     datatable(escape = T, 
+               rownames = F,
+               options = list(
+                 autoWidth = T,
+                 scrollX=TRUE,
+                 pageLength = 1,
+                 columnDefs = list(list(targets=c(0), visible=TRUE, width='400'),
+                                   list(targets=c(1), visible=TRUE, width='200'),
+                                   list(targets=c(3), visible=TRUE, width='800'),
+                                   list(targets=c(4), visible=TRUE, width='400'),
+                                   list(targets=c(6), visible=TRUE, width='400'),
+                                   list(targets=c(7), visible=TRUE, width='400'),
+                                   list(targets=c(8), visible=TRUE, width='800'),
+                                   list(targets=c(10), visible=TRUE, width='400')),
+                 # columnDefs = list(list(width = '400px', targets = c(0,3,4,7,10))),
+                 initComplete = JS("function(settings, json) {$(this.api().table().header()).css({'background-color':
+                                   '#3f3f3f','color':'#ffffff'});}")))
+
+```
+<br>
+<br>
+<br>
+
+# Local
+
+```{r local,results="asis"}
+# Load Data ---------------------------------------------------------------
+
+dta_local %>%
+     datatable(escape = T, 
+               rownames = F,
+               options = list(
+                 autoWidth = T,
+                 scrollX=TRUE,
+                 pageLength = 1,
+                 columnDefs = list(list(targets=c(0), visible=TRUE, width='400'),
+                                   list(targets=c(1), visible=TRUE, width='200'),
+                                   list(targets=c(3), visible=TRUE, width='800'),
+                                   list(targets=c(4), visible=TRUE, width='400'),
+                                   list(targets=c(6), visible=TRUE, width='400'),
+                                   list(targets=c(7), visible=TRUE, width='400'),
+                                   list(targets=c(8), visible=TRUE, width='800'),
+                                   list(targets=c(10), visible=TRUE, width='400')),
+                 # columnDefs = list(list(width = '400px', targets = c(0,3,4,7,10))),
                  initComplete = JS("function(settings, json) {$(this.api().table().header()).css({'background-color':
                                    '#3f3f3f','color':'#ffffff'});}")))
 ```
