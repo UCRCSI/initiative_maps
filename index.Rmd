@@ -44,7 +44,7 @@ knitr::include_graphics("CSI-logo-A-contrast-2018.png")
 </center>
 
 # Overview
-updated `r Sys.Date()`
+
 <style>
 div.blue {background-color: #e6f0ff; border-radius: 5px; padding: 10px;}
 </style>
