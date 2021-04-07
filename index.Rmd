@@ -56,7 +56,7 @@ This directory is the product of the Center for Social Innovation's efforts to d
 ***
 
 <center>
-[Download raw data](https://github.com/CSIUCR/initiative_maps/blob/master/final_initiative.xlsx?raw=true)
+[Download raw data](https://github.com/UCRCSI/initiative_maps/blob/main/final_initiatives.xlsx?raw=true)
 </center>
 ```{r}
 # Load Data ---------------------------------------------------------------
