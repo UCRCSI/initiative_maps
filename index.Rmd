@@ -60,6 +60,7 @@ This directory is the product of the Center for Social Innovation's efforts to d
 </center>
 
 # National
+please use the slider at the bottom of each table to view more columns on the right
 
 ```{r national,results="asis"}
 # Load Data ---------------------------------------------------------------
@@ -70,15 +71,16 @@ dta_national %>%
                rownames = F,
                options = list(
                  autoWidth = T,
-                 scrollX=TRUE,
-                 pageLength = 1,
+                 scrollX=T,
+                 pageLength = 2,
+                 fixedColumns = TRUE,
                  columnDefs = list(list(targets=c(0), visible=TRUE, width='400'),
                                    list(targets=c(1), visible=TRUE, width='200'),
-                                   list(targets=c(3), visible=TRUE, width='800'),
+                                   list(targets=c(3), visible=TRUE, width='1000'),
                                    list(targets=c(4), visible=TRUE, width='400'),
                                    list(targets=c(6), visible=TRUE, width='400'),
-                                   list(targets=c(7), visible=TRUE, width='400'),
-                                   list(targets=c(8), visible=TRUE, width='800'),
+                                   list(targets=c(7), visible=TRUE, width='1000'),
+                                   list(targets=c(8), visible=TRUE, width='1000'),
                                    list(targets=c(10), visible=TRUE, width='400')),
                  # columnDefs = list(list(width = '400px', targets = c(0,3,4,7,10))),
                  initComplete = JS("function(settings, json) {$(this.api().table().header()).css({'background-color':
@@ -90,23 +92,26 @@ dta_national %>%
 <br>
 
 # Statewide
+please use the slider at the bottom of each table to view more columns on the right
 
 ```{r state,results="asis"}
 # Load Data ---------------------------------------------------------------
-dta_state %>%
-     datatable(escape = T, 
+dta_state %>% 
+  datatable(escape = T, 
                rownames = F,
                options = list(
                  autoWidth = T,
-                 scrollX=TRUE,
-                 pageLength = 1,
+                 scrollX=T,
+                 pageLength = 25,
+                 fixedColumns = TRUE,
+                 scrollY = "600px",
                  columnDefs = list(list(targets=c(0), visible=TRUE, width='400'),
                                    list(targets=c(1), visible=TRUE, width='200'),
-                                   list(targets=c(3), visible=TRUE, width='800'),
+                                   list(targets=c(3), visible=TRUE, width='1000'),
                                    list(targets=c(4), visible=TRUE, width='400'),
                                    list(targets=c(6), visible=TRUE, width='400'),
-                                   list(targets=c(7), visible=TRUE, width='400'),
-                                   list(targets=c(8), visible=TRUE, width='800'),
+                                   list(targets=c(7), visible=TRUE, width='1000'),
+                                   list(targets=c(8), visible=TRUE, width='1000'),
                                    list(targets=c(10), visible=TRUE, width='400')),
                  # columnDefs = list(list(width = '400px', targets = c(0,3,4,7,10))),
                  initComplete = JS("function(settings, json) {$(this.api().table().header()).css({'background-color':
@@ -118,6 +123,7 @@ dta_state %>%
 <br>
 
 # Local
+please use the slider at the bottom of each table to view more columns on the right
 
 ```{r local,results="asis"}
 # Load Data ---------------------------------------------------------------
@@ -127,15 +133,17 @@ dta_local %>%
                rownames = F,
                options = list(
                  autoWidth = T,
-                 scrollX=TRUE,
-                 pageLength = 1,
+                 scrollX=T,
+                 pageLength = 25,
+                 fixedColumns = TRUE,
+                 scrollY = "600px",
                  columnDefs = list(list(targets=c(0), visible=TRUE, width='400'),
                                    list(targets=c(1), visible=TRUE, width='200'),
-                                   list(targets=c(3), visible=TRUE, width='800'),
+                                   list(targets=c(3), visible=TRUE, width='1000'),
                                    list(targets=c(4), visible=TRUE, width='400'),
                                    list(targets=c(6), visible=TRUE, width='400'),
-                                   list(targets=c(7), visible=TRUE, width='400'),
-                                   list(targets=c(8), visible=TRUE, width='800'),
+                                   list(targets=c(7), visible=TRUE, width='1000'),
+                                   list(targets=c(8), visible=TRUE, width='1000'),
                                    list(targets=c(10), visible=TRUE, width='400')),
                  # columnDefs = list(list(width = '400px', targets = c(0,3,4,7,10))),
                  initComplete = JS("function(settings, json) {$(this.api().table().header()).css({'background-color':
