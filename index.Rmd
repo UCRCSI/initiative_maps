@@ -4,11 +4,11 @@ author: ''
 date: ""
 output:
   html_document:
-    df_print: paged
-    toc: TRUE
-    toc_float: TRUE
     css: customstyles.css
-always_allow_html: yes
+    self_contained: yes
+    toc: no
+  pdf_document:
+    toc: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -42,8 +42,7 @@ knitr::include_graphics("CSI-logo-A-contrast-2018.png")
 ```
 </center>
 
-# Overview
-
+#Overview
 <style>
 div.blue {background-color: #e6f0ff; border-radius: 5px; padding: 10px;}
 </style>
@@ -59,74 +58,11 @@ This directory is the product of the Center for Social Innovation's efforts to d
 [Download raw data as an Excel file](https://github.com/UCRCSI/initiative_maps/blob/main/final_initiatives.xlsx?raw=true)
 </center>
 
-# National
-please use the slider at the bottom of each table to view more columns on the right
-
-```{r national,results="asis"}
-# Load Data ---------------------------------------------------------------
-source("excel_generator.R")
-
-dta_national %>%
-     datatable(escape = T, 
-               rownames = F,
-               options = list(
-                 autoWidth = T,
-                 scrollX=T,
-                 pageLength = 2,
-                 fixedColumns = TRUE,
-                 columnDefs = list(list(targets=c(0), visible=TRUE, width='400'),
-                                   list(targets=c(1), visible=TRUE, width='200'),
-                                   list(targets=c(3), visible=TRUE, width='1000'),
-                                   list(targets=c(4), visible=TRUE, width='400'),
-                                   list(targets=c(6), visible=TRUE, width='400'),
-                                   list(targets=c(7), visible=TRUE, width='1000'),
-                                   list(targets=c(8), visible=TRUE, width='1000'),
-                                   list(targets=c(10), visible=TRUE, width='400')),
-                 # columnDefs = list(list(width = '400px', targets = c(0,3,4,7,10))),
-                 initComplete = JS("function(settings, json) {$(this.api().table().header()).css({'background-color':
-                                   '#3f3f3f','color':'#ffffff'});}")))
-```
-
-<br>
-<br>
-<br>
-
-# Statewide
-please use the slider at the bottom of each table to view more columns on the right
-
-```{r state,results="asis"}
-# Load Data ---------------------------------------------------------------
-dta_state %>% 
-  datatable(escape = T, 
-               rownames = F,
-               options = list(
-                 autoWidth = T,
-                 scrollX=T,
-                 pageLength = 25,
-                 fixedColumns = TRUE,
-                 scrollY = "600px",
-                 columnDefs = list(list(targets=c(0), visible=TRUE, width='400'),
-                                   list(targets=c(1), visible=TRUE, width='200'),
-                                   list(targets=c(3), visible=TRUE, width='1000'),
-                                   list(targets=c(4), visible=TRUE, width='400'),
-                                   list(targets=c(6), visible=TRUE, width='400'),
-                                   list(targets=c(7), visible=TRUE, width='1000'),
-                                   list(targets=c(8), visible=TRUE, width='1000'),
-                                   list(targets=c(10), visible=TRUE, width='400')),
-                 # columnDefs = list(list(width = '400px', targets = c(0,3,4,7,10))),
-                 initComplete = JS("function(settings, json) {$(this.api().table().header()).css({'background-color':
-                                   '#3f3f3f','color':'#ffffff'});}")))
-
-```
-<br>
-<br>
-<br>
-
-# Local
 please use the slider at the bottom of each table to view more columns on the right
 
 ```{r local,results="asis"}
 # Load Data ---------------------------------------------------------------
+source("excel_generator.R")
 
 dta_local %>%
      datatable(escape = T, 
@@ -136,11 +72,13 @@ dta_local %>%
                  scrollX=T,
                  pageLength = 25,
                  fixedColumns = TRUE,
+                 ordering=F,
                  scrollY = "600px",
                  columnDefs = list(list(targets=c(0), visible=TRUE, width='400'),
                                    list(targets=c(1), visible=TRUE, width='200'),
                                    list(targets=c(3), visible=TRUE, width='1000'),
                                    list(targets=c(4), visible=TRUE, width='400'),
+                                   list(targets=c(5), visible=TRUE, width='400'),
                                    list(targets=c(6), visible=TRUE, width='400'),
                                    list(targets=c(7), visible=TRUE, width='1000'),
                                    list(targets=c(8), visible=TRUE, width='1000'),
